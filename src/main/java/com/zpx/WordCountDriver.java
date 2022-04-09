@@ -30,7 +30,7 @@ public class WordCountDriver {
 
         //6.设置输入和输出路径
         FileInputFormat.setInputPaths(job, new Path("D:\\input\\inputword"));
-        FileOutputFormat.setOutputPath(job, new Path("D:\\hadoop\\output888"));
+        FileOutputFormat.setOutputPath(job, new Path("D:\\hadoop\\cccc"));
         //7.提交job
         boolean result = job.waitForCompletion(true);
 
