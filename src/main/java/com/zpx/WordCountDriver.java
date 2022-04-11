@@ -27,13 +27,11 @@ public class WordCountDriver {
         //5.设置最终输出的kv类型
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(IntWritable.class);
-
         //6.设置输入和输出路径
-        FileInputFormat.setInputPaths(job, new Path("D:\\input\\inputword"));
-        FileOutputFormat.setOutputPath(job, new Path("D:\\hadoop\\cccc"));
+        FileInputFormat.setInputPaths(job, new Path( args[0]));
+        FileOutputFormat.setOutputPath(job, new Path( args[1]));
         //7.提交job
         boolean result = job.waitForCompletion(true);
-
         System.exit(result ? 0 : 1);
     }
 
