@@ -27,12 +27,12 @@ public class WordCountDriver {
         //5.设置最终输出的kv类型
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(IntWritable.class);
-        //job.setInputFormatClass(CombineTextInputFormat.class);
-
+        job.setInputFormatClass(CombineTextInputFormat.class);
+//        CombineTextInputFormat.setMaxInputSplitSize(job, 4194304);
         CombineTextInputFormat.setMaxInputSplitSize(job, 20971520);
         //6.设置输入和输出路径
         FileInputFormat.setInputPaths(job, new Path( "E:\\BaiduNetdiskDownload\\大数据\\资料\\11_input\\inputcombinetextinputformat"));
-        FileOutputFormat.setOutputPath(job, new Path( "D:\\hadoop\\output3"));
+        FileOutputFormat.setOutputPath(job, new Path( "D:\\hadoop\\output4"));
         //7.提交job
         boolean result = job.waitForCompletion(true);
         System.exit(result ? 0 : 1);
