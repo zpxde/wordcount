@@ -1,4 +1,5 @@
 package com.zpx.partitioner2;
+
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.Text;
@@ -39,4 +40,6 @@ public class FlowDriver {
         // 7 提交job
         boolean result = job.waitForCompletion(true);
         System.exit(result ? 0 : 1);
-}}
+
+    }
+}

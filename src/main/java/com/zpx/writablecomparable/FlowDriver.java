@@ -1,4 +1,5 @@
-package com.zpx.writable;
+package com.zpx.writablecomparable;
+
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.Text;
@@ -9,6 +10,7 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import java.io.IOException;
 
 public class FlowDriver {
+
     public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
 
         // 1 获取job
@@ -23,18 +25,19 @@ public class FlowDriver {
         job.setReducerClass(FlowReducer.class);
 
         // 4 设置mapper 输出的key和value类型
-        job.setMapOutputKeyClass(Text.class);
-        job.setMapOutputValueClass(FlowBean.class);
+        job.setMapOutputKeyClass(FlowBean.class);
+        job.setMapOutputValueClass(Text.class);
 
         // 5 设置最终数据输出的key和value类型
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(FlowBean.class);
 
         // 6 设置数据的输入路径和输出路径
-        FileInputFormat.setInputPaths(job, new Path("E:\\BaiduNetdiskDownload\\大数据\\资料\\11_input\\inputflow"));
-        FileOutputFormat.setOutputPath(job, new Path("D:\\hadoop\\output1"));
+        FileInputFormat.setInputPaths(job, new Path("D:\\hadoop\\output1"));
+        FileOutputFormat.setOutputPath(job, new Path("D:\\hadoop\\output2"));
 
         // 7 提交job
         boolean result = job.waitForCompletion(true);
         System.exit(result ? 0 : 1);
-}}
+    }
+}
