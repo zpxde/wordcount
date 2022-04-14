@@ -1,15 +1,15 @@
-package com.zpx;
+package com.zpx.combine;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.lib.input.CombineTextInputFormat;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
 import java.io.IOException;
-import java.util.Set;
 
 public class WordCountDriver {
     public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
@@ -27,9 +27,12 @@ public class WordCountDriver {
         //5.设置最终输出的kv类型
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(IntWritable.class);
+        //job.setInputFormatClass(CombineTextInputFormat.class);
+
+        CombineTextInputFormat.setMaxInputSplitSize(job, 20971520);
         //6.设置输入和输出路径
-        FileInputFormat.setInputPaths(job, new Path( args[0]));
-        FileOutputFormat.setOutputPath(job, new Path( args[1]));
+        FileInputFormat.setInputPaths(job, new Path( "E:\\BaiduNetdiskDownload\\大数据\\资料\\11_input\\inputcombinetextinputformat"));
+        FileOutputFormat.setOutputPath(job, new Path( "D:\\hadoop\\output3"));
         //7.提交job
         boolean result = job.waitForCompletion(true);
         System.exit(result ? 0 : 1);

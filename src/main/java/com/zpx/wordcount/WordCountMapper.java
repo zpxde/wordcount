@@ -1,4 +1,4 @@
-package com.zpx;
+package com.zpx.wordcount;
 
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
@@ -6,6 +6,7 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 
 import java.io.IOException;
+
 /**
  * KEYIN, map阶段输入的key的类型：LongWritable
  * VALUEIN,map阶段输入value类型：Text

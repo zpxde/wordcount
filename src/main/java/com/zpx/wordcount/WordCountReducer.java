@@ -1,4 +1,4 @@
-package com.zpx;
+package com.zpx.wordcount;
 
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
