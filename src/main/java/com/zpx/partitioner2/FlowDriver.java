@@ -34,7 +34,7 @@ public class FlowDriver {
         job.setNumReduceTasks(5);
 
         // 6 设置数据的输入路径和输出路径
-        FileInputFormat.setInputPaths(job, new Path("E:\\BaiduNetdiskDownload\\大数据\\资料\\11_input\\inputflow"));
+        FileInputFormat.setInputPaths(job, new Path("D:\\hadoop\\11_input\\inputflow"));
         FileOutputFormat.setOutputPath(job, new Path("D:\\hadoop\\output2"));
 
         // 7 提交job
