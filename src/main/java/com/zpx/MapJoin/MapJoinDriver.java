@@ -30,12 +30,12 @@ public class MapJoinDriver {
         job.setOutputValueClass(NullWritable.class);
 
         // 加载缓存数据
-        job.addCacheFile(new URI("D:\\hadoop\\11_input\\tablecache\\pd.txt"));
+        job.addCacheFile(new URI("file:///D:/hadoop/11_input/tablecache/pd.txt"));
         // Map端Join的逻辑不需要Reduce阶段，设置reduceTask数量为0
         job.setNumReduceTasks(0);
 
         // 6 设置输入输出路径
-        FileInputFormat.setInputPaths(job, new Path("\"D:\\hadoop\\11_input\\inputtable2\\order.txt\""));
+        FileInputFormat.setInputPaths(job, new Path("D:\\hadoop\\11_input\\inputtable2\\order.txt"));
         FileOutputFormat.setOutputPath(job, new Path("D:\\hadoop\\output1"));
         // 7 提交
         boolean b = job.waitForCompletion(true);
